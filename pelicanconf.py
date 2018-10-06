@@ -34,4 +34,9 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
+STATIC_PATHS = ['images']
+
 THEME = "../pelican-themes/hyde"
+
+BIO = "I'm Daniel Mesejo-Leon, from La Habana. Living and working in Rio de Janeiro. Trying to become a Software Engineer"
+PROFILE_IMAGE = "avatar.jpg"
