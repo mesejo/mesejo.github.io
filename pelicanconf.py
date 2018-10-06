@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'Daniel Mesejo'
-SITENAME = 'The Fox Den'
+SITENAME = 'The Python Path'
 SITEURL = ''
 
 PATH = 'content'
@@ -11,6 +11,8 @@ PATH = 'content'
 TIMEZONE = 'America/Sao_Paulo'
 
 DEFAULT_LANG = 'en'
+
+MD_EXTENSIONS = ['codehilite(css_class=highlight)']
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
