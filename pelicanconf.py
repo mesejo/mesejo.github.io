@@ -26,7 +26,7 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('email', 'mesejoleon@gmail.com'),
+SOCIAL = (('envelope', 'mailto:mesejoleon@gmail.com'),
           ('twitter', 'https://twitter.com/mesejo410'),
           ('linkedin', 'https://www.linkedin.com/in/daniel-alejandro-mesejo-le%C3%B3n/'),
           ('github', 'https://github.com/mesejo'))
