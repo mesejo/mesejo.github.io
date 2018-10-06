@@ -27,7 +27,8 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 
 # Social widget
 SOCIAL = (('email', 'mesejoleon@gmail.com'),
-          ('linkedin', 'https://www.linkedin.com/in/daniel-alejandro-mesejo-le%C3%B3n-6065a482/'),
+          ('twitter', 'https://twitter.com/mesejo410'),
+          ('linkedin', 'https://www.linkedin.com/in/daniel-alejandro-mesejo-le%C3%B3n/'),
           ('github', 'https://github.com/mesejo'))
 
 DEFAULT_PAGINATION = 10
