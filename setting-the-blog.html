@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>The Python Path</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	</head>
+
+	<body class="theme-base-0d">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.jpg">
+					The Python Path
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">I'm Daniel Mesejo-Leon, from La Habana. Living and working in Rio de Janeiro. Trying to become a Software Engineer </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="mailto:mesejoleon@gmail.com">
+				<i class="fa fa-envelope"></i>
+			</a>
+			<a class="sidebar-nav-item" href="https://twitter.com/mesejo410">
+				<i class="fa fa-twitter"></i>
+			</a>
+			<a class="sidebar-nav-item" href="https://www.linkedin.com/in/daniel-alejandro-mesejo-le%C3%B3n/">
+				<i class="fa fa-linkedin"></i>
+			</a>
+			<a class="sidebar-nav-item" href="https://github.com/mesejo">
+				<i class="fa fa-github"></i>
+			</a>
+		</nav>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Setting the blog</h1>
+	<span class="post-date">Sun 07 October 2018</span>
+	<p>In the previous post I wrote that I will look to general software engineering problems to a Python lens. One of the main problems of software engineering is communication. So what better way to learn to communicate that writing a blog. So this first post is going to be about how to setup a blog.</p>
+<p>To setup my blog I choose Pelican. Pelican is a static site generator written in Python and that can be customized via Jinja templates (the same templating engine used by Flask). But before going any deeper: What is static site generator? and Why you should consider using one?</p>
+<p>A static site generator combines a markup language, such as Markdown, with a templating engine such as Jinja, to produce HTML files. So once you generate a site it remains static, i.e. the files do not change. These HTML files can be hosted and served by a web server or content delivery network (CDN). I think this is one of the key features of static site generators, because completely static output is easy to host anywhere. One example is that you can host your blog on Github free of charge. More on why to use a static site generator can be found <a href="https://learn.cloudcannon.com/jekyll/why-use-a-static-site-generator/">here</a>. Now let's get down to business.</p>
+<p><strong>Creating the repo</strong></p>
+<p>To use this tutorial you are going to have Python 3 installed and you need a regular Github user account, then you are going to create a repository with your username: username.github.io.
+By default Github creates a master branch in your repo, this branch is going to be use to store the content of your blog.</p>
+<p>Once the repository is ready, clone the repo in your local machine:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git clone https://github.com/USERNAME/USERNAME.github.io.git
+</pre></div>
+
+
+<p>Once the repo is clone enter the directory:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> USERNAME.github.io
+</pre></div>
+
+
+<p>As the content of the blog is going to be in the master branch, create a new branch (for instance source):</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git checkout -b <span class="nb">source</span>
+</pre></div>
+
+
+<p>Then create a virtual environment. On GNU/Linux systems, the commands might go as:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> python3 -m venv venv
+<span class="gp">$</span> <span class="nb">source</span> venv/bin/activate
+</pre></div>
+
+
+<p>Inside the virtualenv, install pelican and it's dependencies. We will also install ghp-import (to help us with publishing to github) and Markdown (for writing our posts using markdown):</p>
+<div class="highlight"><pre><span></span><span class="gp">(venv)$</span> pip install pelican markdown ghp-import
+</pre></div>
+
+
+<p>Once that is done, we will start creating our blog using pelican-quickstart:</p>
+<div class="highlight"><pre><span></span><span class="gp">(venv)$</span> pelican-quickstart
+</pre></div>
+
+
+<p>Which will prompt us a series of questions. Before answering them, take a look at my answers below:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;</span> Where <span class="k">do</span> you want to create your new web site? <span class="o">[</span>.<span class="o">]</span> ./
+<span class="gp">&gt;</span> What will be the title of this web site? Renata<span class="err">&#39;</span>s blog
+<span class="gp">&gt;</span> Who will be the author of this web site? Renata
+<span class="gp">&gt;</span> What will be the default language of this web site? <span class="o">[</span>pt<span class="o">]</span> en
+<span class="gp">&gt;</span> Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> n
+<span class="gp">&gt;</span> Do you want to <span class="nb">enable</span> article pagination? <span class="o">(</span>Y/n<span class="o">)</span> y
+<span class="gp">&gt;</span> How many articles per page <span class="k">do</span> you want? <span class="o">[</span><span class="m">10</span><span class="o">]</span> <span class="m">10</span>
+<span class="gp">&gt;</span> What is your <span class="nb">time</span> zone? <span class="o">[</span>Europe/Paris<span class="o">]</span> America/Sao_Paulo
+<span class="gp">&gt;</span> Do you want to generate a Fabfile/Makefile to automate generation and publishing? <span class="o">(</span>Y/n<span class="o">)</span> Y **# PAY ATTENTION TO THIS!**
+<span class="gp">&gt;</span> Do you want an auto-reload <span class="p">&amp;</span> simpleHTTP script to assist with theme and site development? <span class="o">(</span>Y/n<span class="o">)</span> n
+<span class="gp">&gt;</span> Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> n
+<span class="gp">&gt;</span> Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> n
+<span class="gp">&gt;</span> Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> n
+<span class="gp">&gt;</span> Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span> n
+<span class="gp">&gt;</span> Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span> n
+<span class="gp">&gt;</span> Do you want to upload your website using GitHub Pages? <span class="o">(</span>y/N<span class="o">)</span> y
+<span class="gp">&gt;</span> Is this your personal page <span class="o">(</span>username.github.io<span class="o">)</span>? <span class="o">(</span>y/N<span class="o">)</span> y
+<span class="go">Done. Your new project is available at /home/username/USERNAME.github.io</span>
+</pre></div>
+
+
+<p>Now, let's create our first post! You might want to open the project folder on your favorite code editor and find the "content" folder inside it. Then, create a <em>new</em> file, which can be called my-first-post.md (don't worry, this is just for us to test, you can change it later). The contents should begin with the metadata which identifies the Title, Date, Category and more from the post before you start with the content, like this:</p>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">Hello</span> <span class="n">World</span><span class="o">!</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">07</span> <span class="mi">10</span><span class="o">:</span><span class="mi">01</span>
+<span class="n">Modified</span><span class="o">:</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">07</span> <span class="mi">12</span><span class="o">:</span><span class="mi">30</span>
+<span class="n">Category</span><span class="o">:</span> <span class="n">misc</span>
+<span class="n">Tags</span><span class="o">:</span> <span class="n">first</span><span class="o">,</span> <span class="n">misc</span>
+<span class="n">Slug</span><span class="o">:</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
+<span class="n">Authors</span><span class="o">:</span> <span class="n">Your</span> <span class="n">name</span>
+<span class="n">Summary</span><span class="o">:</span> <span class="n">The</span> <span class="n">summary</span> <span class="n">of</span> <span class="n">the</span> <span class="n">post</span><span class="o">.</span>
+
+<span class="n">Hello</span> <span class="n">World</span><span class="o">!</span> <span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="o">*</span><span class="n">first</span> <span class="n">post</span><span class="o">*</span> <span class="n">from</span> <span class="n">my</span> <span class="n">Pelican</span> <span class="n">blog</span><span class="o">.</span> <span class="o">**</span><span class="n">YAY</span><span class="o">!**</span>
+</pre></div>
+
+
+<p>Go to the terminal, generate the static files and start the server. To do that, use the following command:</p>
+<div class="highlight"><pre><span></span><span class="gp">(venv)$</span> make html <span class="o">&amp;&amp;</span> make serve
+</pre></div>
+
+
+<p>While this command is running, you should be able to visit it on your favorite web browser by typing localhost:8000 on the address bar. Pretty neat, right?</p>
+<p><strong>Changing the theme</strong></p>
+<p>The above steps should get a site up and running with a default theme. You can create your own theme or use of the many themes provided in pelican-themes.
+Here we are going to cover the latter. First you need to clone the pelican-themes repo to some location, in this example I cloned the repo to the same location
+of the blog repo:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git clone https://github.com/getpelican/pelican-themes
+</pre></div>
+
+
+<p>Then you can choose one the themes for your blog (in the case of this blog was the hyde theme) and set the theme in your settings (pelicanconf.py) file:</p>
+<div class="highlight"><pre><span></span><span class="n">THEME</span> <span class="o">=</span> <span class="s2">&quot;../pelican-themes/hyde&quot;</span>
+</pre></div>
+
+
+<p>Now you have set the theme for your blog!</p>
+<p><strong>Adding images</strong></p>
+<p>The <em>hyde theme</em> allows you to set a profile image, I'm going to use that example to show how to add images to your blog. First you create a directory <em>inside</em> your content directory, where your posts are. Let's call this directory 'images' for easy reference. Now, we have to tell Pelican to use it (in <em>pelicanconf.py</em>):</p>
+<div class="highlight"><pre><span></span><span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Now add the profile image like this:</p>
+<div class="highlight"><pre><span></span><span class="n">PROFILE_IMAGE</span> <span class="o">=</span> <span class="s2">&quot;avatar.jpg&quot;</span>
+</pre></div>
+
+
+<p>This tells Pelican to search for the <code>avatar.jpg</code> file inside the images directory. You can interrupt the server at anytime pressing CTRL+C on the terminal. But you should start it again and check if the image is correct.</p>
+<div class="highlight"><pre><span></span><span class="gp">(venv)$</span> make html <span class="o">&amp;&amp;</span> make serve
+</pre></div>
+
+
+<p>Save everything so we can send our code to Github. We do that by adding all files, committing it with a message ('first commit') and using git push. You will be asked for your Github login and password.</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> git add -A <span class="o">&amp;&amp;</span> git commit -a -m <span class="s1">&#39;first commit&#39;</span> <span class="o">&amp;&amp;</span> git push --all
+</pre></div>
+
+
+<p>And... remember how at the very beginning I said we would be preserving the master branch for the output of the static files generated by Pelican? Now it's time for us to generate them:</p>
+<div class="highlight"><pre><span></span>$ make github
+</pre></div>
+
+
+<p>You will be asked for your Github login and password again. And... voilà! Your new blog should live on https://USERNAME.github.io.</p>
+<p><strong>Further</strong></p>
+<p>This post is based on <a href="https://rsip22.github.io/blog/create-a-blog-with-pelican-and-github-pages.html">this</a>.</p>
+<p>The time zone should be specified as TZ Time zone (<a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">full list</a>).</p>
+</div>
+		</div>
+	</body>
+</html>
