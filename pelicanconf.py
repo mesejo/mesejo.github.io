@@ -12,7 +12,18 @@ TIMEZONE = 'America/Sao_Paulo'
 
 DEFAULT_LANG = 'en'
 
-MD_EXTENSIONS = ['codehilite(css_class=highlight)']
+# MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'toc']
+MARKDOWN = {
+  'extension_configs': {
+    'markdown.extensions.toc': {
+      'title': 'Table of contents:'
+    },
+    'markdown.extensions.codehilite': {'css_class': 'highlight'},
+    'markdown.extensions.extra': {},
+    'markdown.extensions.meta': {},
+  },
+  'output_format': 'html5',
+}
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
